@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Textarea Editor</title>
+  <style>
+    #editor {
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 100px;
+      font-size: 12px;
+      color: black;
+      font-weight: 100;
+      font-style: normal;
+    }
+
+    button.active {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <h1 align="center">Live Textarea Editor</h1>
+
+
+  <select id="fontSizeSelect">
+    <option value="12px">12px</option>
+    <option value="16px">16px</option>
+    <option value="20px">20px</option>
+  </select>
+
+
+  <select id="fontColorSelect">
+    <option value="black">Black</option>
+    <option value="red">Red</option>
+    <option value="blue">Blue</option>
+  </select>
+
+  <!-- Buttons -->
+  <button id="boldBtn">Bold</button>
+  <button id="italicBtn">Italic</button>
+  <button id="resetBtn">Reset</button>
+
+  <!-- Editable content -->
+  <div id="editor" contenteditable="true">Sample text</div>
+
+  <script>
+    const editor = document.getElementById('editor');
+    const fontSizeSelect = document.getElementById('fontSizeSelect');
+    const fontColorSelect = document.getElementById('fontColorSelect');
+    const boldBtn = document.getElementById('boldBtn');
+    const italicBtn = document.getElementById('italicBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function applyStyles() {
+      editor.style.fontSize = fontSizeSelect.value;
+      editor.style.color = fontColorSelect.value;
+      editor.style.fontWeight = boldBtn.classList.contains('active') ? 'bold' : 'normal';
+      editor.style.fontStyle = italicBtn.classList.contains('active') ? 'italic' : 'normal';
+    }
+
+    // Event listeners for font size and color
+    fontSizeSelect.addEventListener('change', applyStyles);
+    fontColorSelect.addEventListener('change', applyStyles);
+
+    // Bold button toggle
+    boldBtn.addEventListener('click', () => {
+      boldBtn.classList.toggle('active');
+      applyStyles();
+    });
+
+    // Italic button toggle
+    italicBtn.addEventListener('click', () => {
+      italicBtn.classList.toggle('active');
+      applyStyles();
+    });
+
+    // Reset button
+    resetBtn.addEventListener('click', () => {
+      fontSizeSelect.value = "12px";
+      fontColorSelect.value = "black";
+      boldBtn.classList.remove('active');
+      italicBtn.classList.remove('active');
+      editor.innerText = "Sample text";
+      applyStyles();
+    });
+
+    // Initial apply
+    applyStyles();
+  </script>
+</body>
+</html>

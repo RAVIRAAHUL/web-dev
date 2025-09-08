@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#textPara {
+    padding: 10px;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+#highlightBtn {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#highlightBtn:hover {
+    opacity: 0.9;
+}
+
+.highlight {
+    background-color: yellow;
+}
